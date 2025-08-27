@@ -1,333 +1,328 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Happy Birthday Wissal 🎉</title>
-<style>
-:root {
-  --pink: #ff758c;
-  --glass: rgba(255,255,255,0.12);
-  --glass-2: rgba(255,255,255,0.22);
-  --white: #fff;
-}
-* {
-  box-sizing: border-box;
-}
-body {
-  margin: 0;
-  font-family: system-ui,-apple-system,Segoe UI,Roboto,'Comic Sans MS',sans-serif;
-  background: linear-gradient(180deg,#ff9a9e,#fad0c4,#fad390);
-  color: var(--white);
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  padding: 20px;
-}
-.container {
-  width: min(980px, 100%);
-  padding: 0 10px;
-}
-.panel {
-  background: var(--glass);
-  border: 1px solid var(--glass-2);
-  backdrop-filter: blur(6px);
-  border-radius: 16px;
-  padding: 22px;
-  box-shadow: 0 10px 24px rgba(0,0,0,.15);
-  position: relative;
-}
-h1 {
-  margin: 0 0 12px;
-  font-size: 2rem;
-}
-p {
-  margin: 0 0 12px;
-}
-button {
-  appearance: none;
-  border: 0;
-  background: var(--pink);
-  color: #fff;
-  padding: 10px 16px;
-  border-radius: 999px;
-  font-weight: 600;
-  cursor: pointer;
-}
-button:active {
-  transform: translateY(1px);
-}
-.hidden {
-  display: none;
-}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Happy Birthday Wissal 🎉</title>
+  <style>
+    :root{--pink:#ff758c;--glass:rgba(255,255,255,0.12);--glass-2:rgba(255,255,255,0.22);--white:#fff}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Comic Sans MS',sans-serif;background:linear-gradient(180deg,#ff9a9e,#fad0c4,#fad390);color:var(--white);min-height:100vh;display:grid;place-items:center;padding:20px}
+    .container{width:min(980px,100%)}
+    .panel{background:var(--glass);border:1px solid var(--glass-2);backdrop-filter:blur(6px);border-radius:16px;padding:22px;box-shadow:0 10px 24px rgba(0,0,0,.15);position:relative}
+    h1{margin:0 0 12px}
+    p{margin:0 0 12px}
+    button{appearance:none;border:0;background:var(--pink);color:#fff;padding:10px 16px;border-radius:999px;font-weight:600;cursor:pointer}
+    button:active{transform:translateY(1px)}
 
-/* Envelope styles */
-.envelope-wrap {
-  display: grid;
-  place-items: center;
-}
-.envelope {
-  width: 90%;
-  max-width: 400px;
-  aspect-ratio: 4 / 3;
-  position: relative;
-  cursor: pointer;
-  user-select: none;
-}
-.env-body {
-  position: absolute;
-  inset: 0;
-  background: #ffd7df;
-  border-radius: 12px;
-  border: 3px solid rgba(0,0,0,.08);
-}
-.env-flap {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 56%;
-  background: #ffb0c1;
-  clip-path: polygon(0 0,100% 0,50% 100%);
-  transform-origin: top;
-  transition: transform .55s cubic-bezier(.2,.9,.3,1);
-}
-.heart {
-  position: absolute;
-  left: 50%;
-  top: 56%;
-  width: 44px;
-  height: 34px;
-  transform: translate(-50%,-40%);
-}
-.heart::before, .heart::after {
-  content: '';
-  position: absolute;
-  width: 22px;
-  height: 36px;
-  background: #ff3366;
-  border-radius: 20px 20px 0 0;
-}
-.heart::before {
-  left: 11px;
-  transform: rotate(-45deg);
-  transform-origin: 0 100%;
-}
-.heart::after {
-  left: -11px;
-  transform: rotate(45deg);
-  transform-origin: 100% 100%;
-}
+    .hidden{display:none}
 
-/* Letter inside (draggable) */
-.letter {
-  position: absolute;
-  left: 5%;
-  right: 5%;
-  bottom: 8%;
-  max-height: 60%;
-  background: #fff;
-  color: #222;
-  border-radius: 10px;
-  padding: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,.15);
-  transform: translateY(60%);
-  opacity: 0;
-  transition: transform .35s cubic-bezier(.2,.9,.3,1), opacity .25s;
-  touch-action: none;
-}
-.envelope.open .letter {
-  transform: translateY(0);
-  opacity: 1;
-}
-.letter h3 { margin: 0 0 8px; }
+    /* Envelope styles */
+    .envelope-wrap{display:grid;place-items:center}
+    .envelope{width:400px;height:300px;position:relative;cursor:pointer;user-select:none}
+    .env-body{position:absolute;inset:0;background:#ffd7df;border-radius:12px;border:3px solid rgba(0,0,0,.08)}
+    .env-flap{position:absolute;top:0;left:0;right:0;height:56%;background:#ffb0c1;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .55s cubic-bezier(.2,.9,.3,1)}
+    .heart{position:absolute;left:50%;top:56%;width:44px;height:34px;transform:translate(-50%,-40%);}
+    .heart::before,.heart::after{content:'';position:absolute;width:22px;height:36px;background:#ff3366;border-radius:20px 20px 0 0}
+    .heart::before{left:11px;transform:rotate(-45deg);transform-origin:0 100%}
+    .heart::after{left:-11px;transform:rotate(45deg);transform-origin:100% 100%}
 
-/* Balloons (global) */
-.balloons {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-}
-.balloons span {
-  position: absolute;
-  bottom: -120px;
-  width: 28px;
-  height: 36px;
-  border-radius: 50% 50% 45% 45%;
-  background: #fff;
-  opacity: .28;
-  filter: blur(.2px);
-  animation: rise linear infinite;
-}
-@keyframes rise {
-  from { transform: translateY(0); }
-  to { transform: translateY(-120vh); }
-}
+    /* Letter inside (draggable) */
+    .letter {
+       position: absolute;
+       left: 8%;
+       right: 8%;
+       bottom: 8%;
+       height: 58%;
+       background: #fff;
+       color: #222;
+       border-radius: 10px;
+       padding: 12px;
+       box-shadow: 0 8px 20px rgba(0,0,0,.15);
+       transform: translateY(60%);
+       opacity: 0;                
+       transition: transform .35s cubic-bezier(.2,.9,.3,1), opacity .25s;
+      touch-action: none;}    
+    .envelope.open .env-flap{transform:rotateX(180deg)}
+    .envelope.open .letter {transform: translateY(0); opacity: 1;}
+    .letter h3{margin:0 0 8px}
 
-/* Timeline */
-.timeline {
-  margin: 14px 0;
-  position: relative;
-}
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 4px;
-  background: rgba(255,255,255,.45);
-  transform: translateX(-50%);
-}
-.event {
-  width: 95%;
-  max-width: 540px;
-  margin: 34px auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-}
-.event img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 12px;
-  box-shadow: 0 10px 24px rgba(0,0,0,.18);
-}
-.event figcaption {
-  margin: 10px 0 6px;
-  font-weight: 700;
-}
-.event::after {
-  content: '⬇';
-  position: absolute;
-  bottom: -28px;
-  font-size: 20px;
-}
+    /* Balloons (global) */
+    .balloons{position:fixed;inset:0;pointer-events:none;z-index:1}
+    .balloons span{position:absolute;bottom:-120px;width:28px;height:36px;border-radius:50% 50% 45% 45%;background:#fff;opacity:.28;filter:blur(.2px);animation:rise linear infinite}
+    @keyframes rise{from{transform:translateY(0)}to{transform:translateY(-120vh)}}
 
-/* Scratch grid */
-.scratch-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
-  gap: 14px;
-  margin-top: 12px;
-}
-.scratch-card {
-  background: #fff;
-  color: #222;
-  border-radius: 12px;
-  padding: 12px;
-  position: relative;
-  overflow: hidden;
-}
-.scratch-inner {
-  min-height: 140px;
-  display: grid;
-  place-items: center;
-  font-weight: 700;
-  padding: 6px;
-}
-.scratch-canvas {
-  position: absolute;
-  left: 12px;
-  top: 12px;
-  right: 12px;
-  bottom: 12px;
-  border-radius: 10px;
-}
+    /* Timeline */
+    .timeline{margin:14px 0;position:relative}
+    .timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:4px;background:rgba(255,255,255,.45);transform:translateX(-50%)}
+    .event{width:min(540px,92%);margin:34px auto;display:flex;flex-direction:column;align-items:center;position:relative}
+    .event img{width:100%;height: auto;object-fit:cover;border-radius:12px;box-shadow:0 10px 24px rgba(0,0,0,.18)}
+    .event figcaption{margin:10px 0 6px;font-weight:700}
+    .event::after{content:'⬇';position:absolute;bottom:-28px;font-size:20px}
 
-/* Gift */
-.gift {
-  display: grid;
-  place-items: center;
-  gap: 10px;
-}
-.gift img {
-  width: 100%;
-  max-width: 160px;
-  border-radius: 12px;
-}
+    /* Scratch grid */
+    .scratch-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:12px}
+    .scratch-card{background:#fff;color:#222;border-radius:12px;padding:12px;position:relative;overflow:hidden}
+    .scratch-inner{min-height:140px;display:grid;place-items:center;font-weight:700;padding:6px}
+    .scratch-canvas{position:absolute;left:12px;top:12px;right:12px;bottom:12px;border-radius:10px}
 
-/* Media Queries */
-@media (max-width: 560px) {
-  .event img { height: auto; }
-  .event figcaption { font-size: 0.9rem; }
-  .envelope { width: 90%; max-width: 260px; aspect-ratio: 4 / 3; }
-  .letter { font-size: 0.85rem; }
-  h1 { font-size: 1.5rem; }
-  p { font-size: 0.85rem; }
-}
-</style>
+
+    /* Gift */
+    .gift{display:grid;place-items:center;gap:10px}
+    .gift img{width:160px;border-radius:12px}
+
+    @media (max-width:560px){.event img{height:160px}.envelope{width:260px;height:180px}}
+  </style>
 </head>
 <body>
-<div id="balloons" class="balloons hidden" aria-hidden="true"></div>
-<div class="container">
-  <!-- PAGE 1: Envelope -->
-  <section id="page1" class="panel page">
-    <h1>Pull out the letter!</h1>
-    <p style="opacity:.9;margin-bottom:12px">Drag the letter up with your finger or mouse to reveal the message.</p>
-    <div class="envelope-wrap">
-      <div id="envelope" class="envelope" role="button" aria-label="Pull letter">
-        <div class="env-body"></div>
-        <div class="env-flap"></div>
-        <div class="heart"></div>
-        <div id="letter" class="letter">
-          <h3>To my best friend Wissal 💖</h3>
-          <p>I’m so lucky to have you in my life. Today is all about celebrating you — your laughter, your kindness and our memories.</p>
-          <p style="margin-top:8px">Ready for a little adventure?</p>
+  <div id="balloons" class="balloons hidden" aria-hidden="true"></div>
+
+  <div class="container">
+    <!-- PAGE 1: Envelope -->
+    <section id="page1" class="panel page">
+      <h1>Pull out the letter!</h1>
+      <p style="opacity:.9;margin-bottom:12px">Drag the letter up with your finger or mouse to reveal the message.</p>
+      <div class="envelope-wrap">
+        <div id="envelope" class="envelope" role="button" aria-label="Pull letter">
+          <div class="env-body"></div>
+          <div class="env-flap"></div>
+          <div class="heart"></div>
+          <div id="letter" class="letter">
+            <h3>To my best friend Wissal 💖</h3>
+            <p>I’m so lucky to have you in my life. Today is all about celebrating you — your laughter, your kindness and our memories.</p>
+            <p style="margin-top:8px">Ready for a little adventure?</p>
+          </div>
         </div>
       </div>
-    </div>
-    <div style="margin-top:14px">
-      <button id="openCardBtn" class="hidden" onclick="showPage(2)">Open Birthday Card 🎉</button>
-    </div>
-  </section>
+      <div style="display:grid;place-items:center;margin-top:10px">
+        <button id="openCardBtn" class="hidden" onclick="showPage(2)">Open Birthday Card 🎉</button>
+      </div>
+    </section>
 
-  <!-- PAGE 2: Birthday Card + balloons -->
-  <section id="page2" class="panel page hidden">
-    <h1>🎂 Happy Birthday, Wissal! 🎂</h1>
-    <p>May your year be as beautiful as a sunset and as exciting as our adventures. 🌅✨</p>
-    <div style="margin-top:10px"><button onclick="showPage(3)">See Our Story 📸</button></div>
-  </section>
+    <!-- PAGE 2: Birthday Card + balloons -->
+    <section id="page2" class="panel page hidden">
+      <h1>🎂 Happy Birthday, Wissal! 🎂</h1>
+      <p>May your year be as beautiful as a sunset and as exciting as our adventures. 🌅✨</p>
+      <div style="display:grid;place-items:center;margin-top:10px"><button onclick="showPage(3)">See Our Story 📸</button></div>
+    </section>
 
-  <!-- PAGE 3: Timeline -->
-  <section id="page3" class="panel page hidden">
-    <h1>🌸 Our Journey Together 🌸</h1>
-    <p style="opacity:.9">Every photo is a little chapter of our story.</p>
-    <div class="timeline">
-      <figure class="event"><figcaption>Disney – Chaos and cotton candy 🎢</figcaption><img src="images/photo1.PNG" alt="Disney"></figure>
-      <figure class="event"><figcaption>Moulin Rouge – Tourist mode activated 🌹</figcaption><img src="images/photo2.PNG" alt="Moulin Rouge"></figure>
-      <figure class="event"><figcaption>Duomo of Milan – Look up! 🏛️</figcaption><img src="images/photo3.PNG" alt="Duomo Milan"></figure>
-      <figure class="event"><figcaption>Italian lake – Chill vibes fail 🌊</figcaption><img src="images/photo4.PNG" alt="Italian lake"></figure>
-      <figure class="event"><figcaption>Barcelona beach – Sun, sand, and silliness ☀️</figcaption><img src="images/photo5.PNG" alt="Barcelona beach"></figure>
-      <figure class="event"><figcaption>Saint-Denis, Paris – Hidden gems and snacks 🏰</figcaption><img src="images/photo6.PNG" alt="Saint Denis Paris"></figure>
-      <figure class="event"><figcaption>Lake Como – Boats & chaos 🛶</figcaption><img src="images/photo7.PNG" alt="Lake Como"></figure>
-      <figure class="event"><figcaption>Galleria, Milan – Gelato and window shopping 🛍️</figcaption><img src="images/photo8.PNG" alt="Galleria Milan"></figure>
-    </div>
-    <div style="display:grid;place-items:center;margin-top:10px"><button onclick="showPage(4)">A Little Game… 🎮</button></div>
-  </section>
+    <!-- PAGE 3: Timeline -->
+    <section id="page3" class="panel page hidden">
+      <h1>🌸 Our Journey Together 🌸</h1>
+      <p>Every photo is a little chapter of our story.</p> 
+      <p>Paris to Milan, to our late-night swim in Barcelona… there’s no one I’d rather share so many memories and laughs with than you.
+        <br>Thank you for being part of every chapter of my life and always having my back. 
+        <br>Little Wiam and Wissal would be so proud and happy to see us like this!</p>
+      <div class="timeline">
+        <figure class="event"><figcaption>We go Disney, think calm… but no! We scream, we run, we eat too much candy... Classic us</figcaption><img src="images/photo1.PNG" alt="First trip"></figure>
+        <figure class="event"><figcaption>Under the Spanish sun ☀️</figcaption><img src="images/photo2.PNG" alt="Spain"></figure>
+        <figure class="event"><figcaption>Walked around pretending to shop, secretly eating gelato, taking weird mirror selfies… ✨</figcaption><img src="images/photo3.PNG" alt="Milan"></figure>
+        <figure class="event"><figcaption>Under the Spanish sun ☀️</figcaption><img src="images/photo4.PNG" alt="Adventure"></figure>
+        <figure class="event"><figcaption>Every road is better with you</figcaption><img src="images/photo5.PNG" alt="Road trip"></figure>
+        <figure class="event"><figcaption>Every road is better with you</figcaption><img src="images/photo6.PNG" alt="Road trip"></figure>
+        <figure class="event"><figcaption>Every road is better with you</figcaption><img src="images/photo7.PNG" alt="Road trip"></figure>
+      </div>
+      <div style="display:grid;place-items:center;margin-top:10px"><button onclick="showPage(4)">A Little Game… 🎮</button></div>
+    </section>
 
-  <!-- PAGE 4 & 5 remain same -->
-  <!-- ... keep your previous scratch cards and gift sections ... -->
-</div>
+    <!-- PAGE 4: 3 scratch cards -->
+    <section id="page4" class="panel page hidden">
+      <h1>🖌️ Scratch to Reveal</h1>
+      <p class="hint" style="opacity:.9;margin-bottom:8px">Scratch all three cards to reveal the surprise.</p>
+      <div class="scratch-grid">
+        <div class="scratch-card">
+          <div class="scratch-inner">💭 What is something we always wanted to do together?</div>
+          <canvas id="scratch1" class="scratch-canvas"></canvas>
+        </div>
+        <div class="scratch-card">
+          <div class="scratch-inner">⚡ Something that can make our adrenaline go up?</div>
+          <canvas id="scratch2" class="scratch-canvas"></canvas>
+        </div>
+        <div class="scratch-card">
+          <div class="scratch-inner">🎁 Your big surprise is waiting…</div>
+          <canvas id="scratch3" class="scratch-canvas"></canvas>
+        </div>
+      </div>
+      <div style="display:grid;place-items:center;margin-top:10px">
+        <button id="scratchContinue" class="hidden" onclick="showPage(5)">See the Gift 🎉</button>
+      </div>
+    </section>
 
-<script>
-// JavaScript remains the same for envelope drag, page navigation, balloons, and scratch cards
-// Just ensure letter starts hidden until pulled
-document.getElementById('letter').style.opacity = '0';
+    <!-- PAGE 5: Gift reveal -->
+    <section id="page5" class="panel page hidden">
+      <h1>🎁 Your Gift 🎁</h1>
+      <p style="font-weight:800">My gift to you: 🪂 A SKYDIVING ADVENTURE together — whenever you want!</p>
+      <figure class="event"><figcaption>Us fainting while SKYDIVING</figcaption><img src="images/skydiving.jpeg" alt="SKYDIVING"></figure>
+      <div style="display:grid;place-items:center;margin-top:10px">I can’t wait to fly with you above the world and of course faint together🌍💙</div>
+    </section>
+  </div>
 
-function showPage(n){
-  document.querySelectorAll('.page').forEach(p => p.classList.add('hidden'));
-  const target = document.getElementById('page'+n);
-  if(target) target.classList.remove('hidden');
-  const balloons = document.getElementById('balloons');
-  balloons.classList.toggle('hidden', !(n===2||n===5));
-  if(n===4){ initAllScratch(); }
-}
+  <script>
+    // showPage: hide all .page and reveal target
+    function showPage(n){
+      document.querySelectorAll('.page').forEach(p => p.classList.add('hidden'));
+      const target = document.getElementById('page'+n);
+      if(target) target.classList.remove('hidden');
+      // balloons on page2 and page5
+      const balloons = document.getElementById('balloons');
+      balloons.classList.toggle('hidden', !(n===2||n===5));
+      // initialize scratch when entering page4
+      if(n===4){ initAllScratch(); }
+    }
 
-// Rest of your existing JavaScript for envelope drag, scratch cards, balloons...
-</script>
+    // balloons generator
+    (function spawnBalloons(){
+      const wrap = document.getElementById('balloons');
+      const colors = ['#fff','#fff5a5','#ffd1dc','#b5e3ff','#d2ffe3'];
+      for(let i=0;i<18;i++){
+        const s = document.createElement('span');
+        s.style.left = (Math.random()*100)+'vw';
+        s.style.animationDuration = (8+Math.random()*10)+'s';
+        s.style.animationDelay = (-Math.random()*12)+'s';
+        s.style.background = colors[Math.floor(Math.random()*colors.length)];
+        wrap.appendChild(s);
+      }
+    })();
+
+    // Envelope drag-to-pull implementation
+    (function envelopeDrag(){
+      const envelope = document.getElementById('envelope');
+      const letter = document.getElementById('letter');
+      const openBtn = document.getElementById('openCardBtn');
+      let startY = 0, startOffset = 60; // percent hidden
+      let currentOffset = startOffset;
+      let activePointer = null;
+
+      function setLetterOffset(percent){
+        percent = Math.max(0, Math.min(60, percent));
+        currentOffset = percent;
+        letter.style.transform = `translateY(${percent}%)`;
+      }
+
+      function pointerDown(e){
+        activePointer = e.pointerId;
+        envelope.setPointerCapture(activePointer);
+        startY = e.clientY;
+        startOffset = currentOffset;
+      }
+
+      function pointerMove(e){
+        if(activePointer !== e.pointerId) return;
+        const rect = envelope.getBoundingClientRect();
+        const delta = startY - e.clientY; // positive when dragging up
+        const percentDelta = (delta / rect.height) * 100;
+        const newOffset = startOffset - percentDelta;
+        setLetterOffset(newOffset);
+      }
+
+      function pointerUp(e){
+        if(activePointer !== e.pointerId) return;
+        envelope.releasePointerCapture(activePointer);
+        activePointer = null;
+        // decide threshold for open
+        if(currentOffset < 18){ // sufficiently pulled
+          envelope.classList.add('open');
+          setLetterOffset(0);
+          // show open button after animation
+          setTimeout(()=> openBtn.classList.remove('hidden'), 500);
+        } else {
+          // snap back
+          letter.style.transition = 'transform .45s cubic-bezier(.2,.9,.3,1)';
+          setLetterOffset(60);
+          setTimeout(()=>{ letter.style.transition = ''; }, 500);
+        }
+      }
+
+      envelope.addEventListener('pointerdown', pointerDown);
+      envelope.addEventListener('pointermove', pointerMove);
+      envelope.addEventListener('pointerup', pointerUp);
+      envelope.addEventListener('pointercancel', pointerUp);
+
+      // also allow clicking the envelope to open quickly
+      envelope.addEventListener('click', (ev)=>{
+        // if already mostly open do nothing
+        if(currentOffset <= 30) return;
+        envelope.classList.add('open'); setLetterOffset(0);
+        setTimeout(()=> openBtn.classList.remove('hidden'), 500);
+      });
+    })();
+
+    // Scratch cards: initialize on demand
+    const revealed = new Set();
+    function initAllScratch(){
+      revealed.clear();
+      document.getElementById('scratchContinue').classList.add('hidden');
+      initScratch('scratch1', 32);
+      initScratch('scratch2', 32);
+      initScratch('scratch3', 32);
+    }
+
+    function initScratch(id, threshold){
+      const canvas = document.getElementById(id);
+      if(!canvas) return;
+      // clear any previous listeners or inline styles
+      canvas.style.opacity = '1';
+      canvas.style.transition = '';
+      // size canvas to its CSS size with devicePixelRatio
+      function resize(){
+        const rect = canvas.getBoundingClientRect();
+        const dpr = window.devicePixelRatio || 1;
+        canvas.width = Math.floor(rect.width * dpr);
+        canvas.height = Math.floor(rect.height * dpr);
+        canvas.style.width = rect.width + 'px';
+        canvas.style.height = rect.height + 'px';
+        const ctx = canvas.getContext('2d');
+        ctx.setTransform(dpr,0,0,dpr,0,0);
+        // draw overlay
+        ctx.fillStyle = '#9aa0a6';
+        ctx.fillRect(0,0,rect.width,rect.height);
+        // subtle texture
+        ctx.globalAlpha = .12; ctx.fillStyle='#000';
+        for(let y=0;y<rect.height;y+=8){ ctx.fillRect(0,y,rect.width,4); }
+        ctx.globalAlpha = 1;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      const ctx = canvas.getContext('2d');
+      let drawing = false;
+      let pointerId = null;
+
+      function getPos(e){ const r=canvas.getBoundingClientRect(); const x=(e.touches?e.touches[0].clientX:e.clientX)-r.left; const y=(e.touches?e.touches[0].clientY:e.clientY)-r.top; return {x,y}; }
+      function down(e){ drawing=true; pointerId = e.pointerId || null; }
+      function up(e){ drawing=false; pointerId = null; checkClear(); }
+      function move(e){ if(!drawing) return; e.preventDefault(); const p = getPos(e); ctx.globalCompositeOperation='destination-out'; ctx.beginPath(); ctx.arc(p.x, p.y, 20, 0, Math.PI*2); ctx.fill(); }
+
+      // pointer events
+      canvas.addEventListener('pointerdown', (e)=>{ e.preventDefault(); canvas.setPointerCapture && canvas.setPointerCapture(e.pointerId); down(e); });
+      canvas.addEventListener('pointermove', (e)=>{ move(e); });
+      canvas.addEventListener('pointerup', (e)=>{ canvas.releasePointerCapture && canvas.releasePointerCapture(e.pointerId); up(e); });
+      canvas.addEventListener('pointercancel', (e)=>{ up(e); });
+      // fallback touch
+      canvas.addEventListener('touchstart', (e)=>{ drawing=true; });
+      canvas.addEventListener('touchend', (e)=>{ drawing=false; checkClear(); });
+      canvas.addEventListener('touchmove', (e)=>{ move(e); }, {passive:false});
+
+      function checkClear(){
+        const rect = canvas.getBoundingClientRect();
+        try{
+          const img = ctx.getImageData(0,0,rect.width,rect.height).data;
+          let clear=0; for(let i=3;i<img.length;i+=4){ if(img[i]===0) clear++; }
+          const percent = clear/(rect.width*rect.height)*100;
+          if(percent>threshold){ revealCanvas(id); }
+        }catch(err){ /* security error unlikely here */ }
+      }
+
+      // small helper to reveal if already scratched from previous run
+      function revealCanvasOnce(){ if(revealed.has(id)) { canvas.style.opacity='0'; canvas.style.pointerEvents='none'; }}
+      revealCanvasOnce();
+    }
+
+    function revealCanvas(id){ if(revealed.has(id)) return; revealed.add(id); const c = document.getElementById(id); if(!c) return; c.style.transition='opacity .3s ease'; c.style.opacity='0'; setTimeout(()=>{ c.style.pointerEvents='none'; },350); if(revealed.size>=3) document.getElementById('scratchContinue').classList.remove('hidden'); }
+
+    // init first page state
+    document.querySelectorAll('.page').forEach(p => p.classList.add('hidden'));
+    document.getElementById('page1').classList.remove('hidden');
+  </script>
 </body>
 </html>
