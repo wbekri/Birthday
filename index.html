@@ -85,6 +85,12 @@ button:active{transform:translateY(1px)}
 .gift{display:grid;place-items:center;gap:10px}
 .gift img{width:160px;border-radius:12px}
 
+/* Confetti animation */
+@keyframes fall {
+  0%   { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(110vh) rotate(360deg); }
+}
+
 @media (max-width:560px){.event img{height:160px}.envelope{width:260px;height:180px}}
 </style>
 </head>
@@ -117,14 +123,22 @@ button:active{transform:translateY(1px)}
 <section id="page2" class="panel page hidden">
   <h1>🎂 Happy Birthday, Wissal! 🎂</h1>
   <p>May your year be as beautiful as a sunset and as exciting as our adventures. 🌅✨</p>
-  <div style="display:grid;place-items:center;margin-top:10px"><button onclick="showPage(3)">See Our Story 📸</button></div>
+  <div style="display:grid;place-items:center;margin-top:10px"><button onclick="showPage(3)">A Little Game… 🎮</button></div>
 </section>
-
-<!-- PAGE 3: Timeline -->
 <section id="page3" class="panel page hidden">
+  <h1>🎯 Quiz Time!</h1>
+  <p>Which city did we visit first together?</p>
+  <button onclick="quizAnswer('wrong')">Milan</button>
+  <button onclick="quizAnswer('wrong')">Paris</button>
+  <button onclick="quizAnswer('correct')">Barcelona</button>
+  <p id="quizFeedback" style="margin-top:10px;font-weight:bold;"></p>
+  <div style="display:grid;place-items:center;margin-top:10px"><button onclick="showPage(4)">See Our Story 📸</button></div>
+</section>
+<!-- PAGE 4: Timeline -->
+<section id="page4" class="panel page hidden">
   <h1>🌸 Our Journey Together 🌸</h1>
   <p>Every photo is a little chapter of our story.</p> 
-  <p>Paris to Milan, to our late-night swim in Barcelona… there’s no one I’d rather share so many memories and laughs with than you.
+  <p>From Paris to Milan, to our late-night swim in Barcelona… there’s no one I’d rather share so many memories and laughs with than you.
     <br>Thank you for being part of every chapter of my life and always having my back. 
     <br>Little Wiam and Wissal would be so proud and happy to see us like this!</p>
   <div class="timeline">
@@ -136,11 +150,20 @@ button:active{transform:translateY(1px)}
     <figure class="event"><figcaption>Moulin Rouge – Tourist mode activated 🌹</figcaption><img src="images/photo7.PNG" alt="Road trip"></figure>
     <figure class="event"><figcaption>Como lake : Lost in the beauty, found in laughter 🌊😎</figcaption><img src="images/photo8.PNG" alt="Adventure"></figure>
   </div>
-  <div style="display:grid;place-items:center;margin-top:10px"><button onclick="showPage(4)">A Little Game… 🎮</button></div>
+  <div style="display:grid;place-items:center;margin-top:10px"><button onclick="showPage(6)">See Your Surprise 🎬</button></div>
 </section>
-
-<!-- PAGE 4: Scratch cards -->
-<section id="page4" class="panel page hidden">
+<!-- PAGE 6: Surprise Video -->
+<section id="page6" class="panel page hidden">
+  <h1>🎥 Surprise Video!</h1>
+  <p>Here’s a little memory just for you…</p>
+  <video controls width="90%" style="max-width:500px;border-radius:12px;">
+    <source src="images/video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <button onclick="showPage(7)">Back to Gift 🎁</button>
+</section>
+<!-- PAGE 7: Scratch cards -->
+<section id="page7" class="panel page hidden">
   <h1>🖌️ Scratch to Reveal</h1>
   <p class="hint" style="opacity:.9;place-items:center;margin-bottom:8px">Scratch all three cards to reveal the surprise.</p>
   <div class="scratch-grid">
@@ -156,14 +179,13 @@ button:active{transform:translateY(1px)}
       <div class="scratch-inner">🎁 Your big surprise is waiting…</div>
       <canvas id="scratch3" class="scratch-canvas"></canvas>
     </div>
-  </div>
-  <div style="display:grid;place-items:center;margin-top:10px">
-    <button id="scratchContinue" class="hidden" onclick="showPage(5)">See the Gift 🎉</button>
+    <div style="display:grid;place-items:center;margin-top:10px">
+    <button id="scratchContinue" class="hidden" onclick="showPage(8)">See the Gift 🎉</button>
+    </div>
   </div>
 </section>
-
-<!-- PAGE 5: Gift reveal -->
-<section id="page5" class="panel page hidden">
+<!-- PAGE final: Gift reveal -->
+<section id="page8" class="panel page hidden">
   <h1>🎁 Your Gift 🎁</h1>
   <div id="countdown"></div>
   <p id="giftText" style="opacity:0;font-weight:800">My gift to you: 🪂 A SKYDIVING ADVENTURE together — whenever you want!</p>
@@ -173,7 +195,6 @@ button:active{transform:translateY(1px)}
     <button onclick="sendGiftEmail()">📧 Receive your surprise by email</button>
   </div>
 </section>
-</div>
 
 <script>
 // Show page
@@ -183,8 +204,8 @@ function showPage(n){
   if(target) target.classList.remove('hidden');
   const balloons=document.getElementById('balloons');
   balloons.classList.toggle('hidden', !(n===2||n===5));
-  if(n===4) initAllScratch();
-  if(n===5) revealGiftSequentially();
+  if(n===7) initAllScratch();   // ✅ fixed scratch init
+  if(n===8) revealGiftSequentially();
 }
 
 // Balloons
@@ -266,8 +287,20 @@ function spawnConfetti(){
     setTimeout(()=>conf.remove(),5000);
   }
 }
-/*@keyframes fall{0%{transform:translateY(0) rotate(0deg);}100%{transform:translateY(110vh) rotate(360deg);}}*/
 
+// Quiz Page
+function quizAnswer(answer){
+  const feedback = document.getElementById('quizFeedback');
+  if(answer==='correct'){
+    feedback.textContent="🎉 Correct! Our first trip together was Barcelona!";
+    feedback.style.color="#fff";
+  } else {
+    feedback.textContent="❌ Nope! Try again!";
+    feedback.style.color="#ff6b81";
+  }
+}
+
+// Gift reveal
 function revealGiftSequentially(){
   const text=document.getElementById('giftText');
   const img=document.getElementById('giftImg');
@@ -286,7 +319,6 @@ function startCountdown(callback){
 }
 
 // Send email
-
 function sendGiftEmail() {
   emailjs.send("service_3phx6vp","template_tz82toc")
    .then(
