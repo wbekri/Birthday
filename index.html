@@ -109,7 +109,7 @@ button:active{transform:translateY(1px)}
       <div class="heart"></div>
       <div id="letter" class="letter">
         <h3>To my best friend Wissal 💖</h3>
-        <p>I’m so lucky to have you in my life. Today is all about celebrating you — your laughter, your kindness and our memories.</p>
+        <p>I’m so lucky to have you in my life. Today is all about celebrating you — your laughterand our memories.</p>
         <p style="margin-top:8px">Ready for a little adventure?</p>
       </div>
     </div>
@@ -121,18 +121,26 @@ button:active{transform:translateY(1px)}
 
 <!-- PAGE 2 -->
 <section id="page2" class="panel page hidden">
-  <h1>🎂 Happy Birthday, Wissal! 🎂</h1>
-  <p>May your year be as beautiful as a sunset and as exciting as our adventures. 🌅✨</p>
-  <div style="display:grid;place-items:center;margin-top:10px"><button onclick="showPage(3)">A Little Game… 🎮</button></div>
-</section>
-<section id="page3" class="panel page hidden">
-  <h1>🎯 Quiz Time!</h1>
-  <p>Which city did we visit first together?</p>
-  <button onclick="quizAnswer('wrong')">Milan</button>
-  <button onclick="quizAnswer('wrong')">Paris</button>
-  <button onclick="quizAnswer('correct')">Barcelona</button>
+  <h1>😂 Bestie Challenge!</h1>
+  <p>Which one thing did we *totally* nail together? 😎</p>
+
+  <div style="display:grid;gap:10px;margin-top:12px;">
+    <button onclick="quizAnswer('correct', '🎉 Yes totally! Remember (lmlebda, la hollandaise, ma wara2a chams)?')">
+      Giving nicknames to people so we could talk freely about them
+    </button>
+    <button onclick="quizAnswer('wrong', '😅 Nope! Not that one… think about something silly only we would do.')">
+      Making matching playlists for every mood
+    </button>
+    <button onclick="quizAnswer('wrong', '😂 Haha, close but nope! Remember the thing that always made us laugh?')">
+      Drawing secret doodles on each other’s notes
+    </button>
+  </div>
+
+  <div style="display:grid;place-items:center;margin-top:10px">
+    <button id="quizNext" class="hidden" onclick="showPage(4)">See Our Story 📸</button>
+  </div>
+
   <p id="quizFeedback" style="margin-top:10px;font-weight:bold;"></p>
-  <div style="display:grid;place-items:center;margin-top:10px"><button onclick="showPage(4)">See some of our adventures 📸</button></div>
 </section>
 <!-- PAGE 4: Timeline -->
 <section id="page4" class="panel page hidden">
@@ -189,8 +197,8 @@ button:active{transform:translateY(1px)}
   <h1>🎁 Your Gift 🎁</h1>
   <div id="countdown"></div>
   <p id="giftText" style="opacity:0;font-weight:800">My gift to you: 🪂 A SKYDIVING ADVENTURE together — whenever you want!</p>
-  <figure class="event"><figcaption>Us fainting while SKYDIVING</figcaption><img id="giftImg" src="images/skydiving.jpeg" alt="SKYDIVING" style="opacity:0"></figure>
-  <div style="display:grid;place-items:center;margin-top:10px">I can’t wait to fly with you above the world together🌍💙</div>
+  <figure class="event"><img id="giftImg" src="images/skydiving.jpeg" alt="SKYDIVING" style="opacity:0"></figure>
+  <div id="giftText" style="display:grid;place-items:center;margin-top:10px">I can’t wait to fly with you above the world 🌍💙</div>
   <div style="display:grid;place-items:center;margin-top:20px">
     <button onclick="sendGiftEmail()">📧 Receive your surprise by email</button>
   </div>
@@ -289,16 +297,20 @@ function spawnConfetti(){
 }
 
 // Quiz Page
-function quizAnswer(answer){
+function quizAnswer(answer, msg){
   const feedback = document.getElementById('quizFeedback');
-  if(answer==='correct'){
-    feedback.textContent="🎉 Correct! Our first trip together was Barcelona!";
-    feedback.style.color="#fff";
+  const nextBtn = document.getElementById('quizNext');
+  feedback.textContent = msg;
+
+  if(answer === 'correct'){
+    feedback.style.color = '#0000FF';
+    spawnConfetti(); // Fun pop!
+    nextBtn.classList.remove('hidden');
   } else {
-    feedback.textContent="❌ Nope! Try again!";
-    feedback.style.color="#ff6b81";
+    feedback.style.color = '#ff6b81';
   }
 }
+
 
 // Gift reveal
 function revealGiftSequentially(){
