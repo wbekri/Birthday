@@ -99,7 +99,12 @@ button:active{transform:translateY(1px)}
 
 <div class="container">
 <!-- PAGE 1: Envelope -->
+<button onclick="document.getElementById('bg-music').play()">🎵 Play Music</button>
+<button onclick="document.getElementById('bg-music').pause()">⏸️ Pause</button>
 <section id="page1" class="panel page">
+  <audio id="bg-music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+  </audio>
   <h1>Pull out the letter!</h1>
   <p style="opacity:.9;margin-bottom:12px">Drag the letter up with your finger or mouse to reveal the message.</p>
   <div class="envelope-wrap">
@@ -109,7 +114,7 @@ button:active{transform:translateY(1px)}
       <div class="heart"></div>
       <div id="letter" class="letter">
         <h3>To my best friend Wissal 💖</h3>
-        <p>I’m so lucky to have you in my life. Today is all about celebrating you — your laughterand our memories.</p>
+        <p>I’m so lucky to have you in my life. Today is all about celebrating you — your laughte and our memories.</p>
         <p style="margin-top:8px">Ready for a little adventure?</p>
       </div>
     </div>
@@ -128,8 +133,8 @@ button:active{transform:translateY(1px)}
     <button onclick="quizAnswer('correct', '🎉 Yes totally! Remember (lmlebda, la hollandaise, ma wara2a chams)?')">
       Giving nicknames to people so we could talk freely about them
     </button>
-    <button onclick="quizAnswer('wrong', '😅 Nope! Not that one… think about something silly only we would do.')">
-      Making matching playlists for every mood
+    <button onclick="quizAnswer('wrong', '😅 Nope! You know I was terrible at making playlists… I just vibed to yours like the loyal listener I am 🎧')">
+      Making matching playlists
     </button>
     <button onclick="quizAnswer('wrong', '😂 Haha, close but nope! Remember the thing that always made us laugh?')">
       Drawing secret doodles on each other’s notes
@@ -168,7 +173,9 @@ button:active{transform:translateY(1px)}
     <source src="images/video.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
+  <div style="display:grid;place-items:center;margin-top:10px">
   <button onclick="showPage(7)">Back to Gift 🎁</button>
+  </div>
 </section>
 <!-- PAGE 7: Scratch cards -->
 <section id="page7" class="panel page hidden">
@@ -196,7 +203,7 @@ button:active{transform:translateY(1px)}
 <section id="page8" class="panel page hidden">
   <h1>🎁 Your Gift 🎁</h1>
   <div id="countdown"></div>
-  <p id="giftText" style="opacity:0;font-weight:800">My gift to you: 🪂 A SKYDIVING ADVENTURE together — whenever you want!</p>
+  <p id="giftText" style="opacity:0;font-weight:800">My gift to you: 🪂 A PARAGLIDING  ADVENTURE together — whenever you want!</p>
   <figure class="event"><img id="giftImg" src="images/skydiving.jpeg" alt="SKYDIVING" style="opacity:0"></figure>
   <div id="giftText" style="display:grid;place-items:center;margin-top:10px">I can’t wait to fly with you above the world 🌍💙</div>
   <div style="display:grid;place-items:center;margin-top:20px">
